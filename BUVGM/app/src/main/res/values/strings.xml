@@ -15,4 +15,10 @@
     <string name="ingresoCorNuevoTxt">Ingrese su correo</string>
     <string name="ConfirmacionPSW">Confirmar contraseña</string>
     <string name="registrarse">Registrarse</string>
+    <string name="Search_hint">Buscar</string>
+    <string name="registro_tittle_tool">Registro</string>
+    <string name="BUVGM_APP">BUVGM</string>
+    <string name="home">Home</string>
+    <string name="search">Search</string>
+    <string name="favorites">Favorites</string>
 </resources>

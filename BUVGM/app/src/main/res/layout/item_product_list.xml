@@ -39,14 +39,22 @@
         tools:text="Descripcion"/>
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/precio_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
         android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/product_imageView"
+        app:layout_constraintTop_toBottomOf="@+id/description_textView"
+        tools:text="precio" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/favorito_imageView_animated"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="precio"/>
+        app:srcCompat="@drawable/ic_launcher_foreground" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

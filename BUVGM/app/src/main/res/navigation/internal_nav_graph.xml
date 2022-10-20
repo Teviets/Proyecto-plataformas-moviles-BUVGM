@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/internal_nav_graph"
+    app:startDestination="@id/productsHomeFragment">
+
+    <fragment
+        android:id="@+id/productsHomeFragment"
+        android:name="com.buvgm.ui.productos.ProductsHomeFragment"
+        android:label="fragment_products_home"
+        tools:layout="@layout/fragment_products_home" >
+        <action
+            android:id="@+id/action_productsHomeFragment_to_favoritesFragment"
+            app:destination="@id/favoritesFragment" />
+        <action
+            android:id="@+id/action_productsHomeFragment_to_searchFragment2"
+            app:destination="@id/searchFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.buvgm.ui.favoritos.FavoritesFragment"
+        android:label="fragment_favorites"
+        tools:layout="@layout/fragment_favorites" >
+        <action
+            android:id="@+id/action_favoritesFragment_to_productsHomeFragment2"
+            app:destination="@id/productsHomeFragment" />
+        <action
+            android:id="@+id/action_favoritesFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.buvgm.ui.busqueda.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_searchFragment_to_productsHomeFragment2"
+            app:destination="@id/productsHomeFragment" />
+        <action
+            android:id="@+id/action_searchFragment_to_favoritesFragment2"
+            app:destination="@id/favoritesFragment" />
+    </fragment>
+</navigation>
