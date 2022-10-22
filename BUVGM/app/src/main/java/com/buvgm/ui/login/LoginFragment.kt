@@ -1,19 +1,42 @@
 package com.buvgm.ui.login
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.buvgm.R
+import androidx.navigation.findNavController
+import com.buvgm.databinding.FragmentLoginBinding
+import com.buvgm.ui.InternalActivity
 
-class LoginFragment : Fragment(R.layout.fragment_login) {
+class LoginFragment : Fragment() {
+
+    private lateinit var binding: FragmentLoginBinding
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login, container, false)
+        binding = FragmentLoginBinding.inflate(inflater,container,false )
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setListeners()
+    }
+
+    private fun setListeners(){
+        binding.loginButton.setOnClickListener{
+            val intent = Intent(activity, InternalActivity::class.java)
+            startActivity(intent)
+        }
+        binding.clicklabeTextViewRegister.setOnClickListener {
+            requireView().findNavController().navigate(
+                LoginFragmentDirections.actionLoginFragmentToNewAccountFragment()
+            )
+        }
     }
 }
