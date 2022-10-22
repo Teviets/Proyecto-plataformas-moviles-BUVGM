@@ -21,4 +21,23 @@
     <string name="home">Home</string>
     <string name="search">Search</string>
     <string name="favorites">Favorites</string>
+    <string name="Settings">Configuracion</string>
+    <string name="Theme">Theme</string>
+    <string name="Theme_mode">Night Mode</string>
+    <string name="LogOut">Cerrar Sesion</string>
+    <string name="Logout">Log out</string>
+    <string name="New_product">Producto Nuevo</string>
+    <string name="Nombre_producto">Nombre del Producto</string>
+    <string name="Precio_producto">Precio del Producto</string>
+    <string name="Contacto">Escriba su numero de telefono o donde desea ser contactado</string>
+    <string name="Descripcion_producto">Descripcion del Producto</string>
+    <string name="New_image">Importar imagen</string>
+    <string name="Cancel">Cancelar</string>
+    <string name="Listo">LISTO</string>
+    <string name="Producto">Producto</string>
+    <string name="Nombre">Nombre</string>
+    <string name="Precio">Q. Precio</string>
+    <string name="Telefono">Telefono</string>
+    <string name="Descripcion">Descripcion</string>
+
 </resources>
