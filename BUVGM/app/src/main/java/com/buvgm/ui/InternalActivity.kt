@@ -18,7 +18,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 class InternalActivity : AppCompatActivity() {
 
     private lateinit var bottomNav: BottomNavigationView
-    private lateinit var tool: Toolbar
+    private lateinit var tool: androidx.appcompat.widget.Toolbar
     private lateinit var container: FragmentContainerView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,7 +42,7 @@ class InternalActivity : AppCompatActivity() {
             }
             true
         }
-        tool.setOnMenuItemClickListener {
+        /*tool.setOnMenuItemClickListener {
             when(it.itemId){
                 R.id.nuevoProducto_item -> {
                     tool.visibility = GONE
@@ -58,7 +58,7 @@ class InternalActivity : AppCompatActivity() {
                 }
                 else -> true
             }
-        }
+        }*/
     }
 
     private fun setFragment(fragment: Fragment) {

@@ -6,9 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
+import com.buvgm.R
 import com.buvgm.databinding.FragmentLoginBinding
 import com.buvgm.ui.InternalActivity
+import com.buvgm.ui.MainActivity
 
 class LoginFragment : Fragment() {
 
@@ -30,13 +33,13 @@ class LoginFragment : Fragment() {
 
     private fun setListeners(){
         binding.loginButton.setOnClickListener{
-            val intent = Intent(activity, InternalActivity::class.java)
+            val intent = Intent(context, InternalActivity::class.java)
             startActivity(intent)
         }
         binding.clicklabeTextViewRegister.setOnClickListener {
-            requireView().findNavController().navigate(
-                LoginFragmentDirections.actionLoginFragmentToNewAccountFragment()
-            )
+            val action = LoginFragmentDirections.actionLoginFragmentToNewAccountFragment()
+            requireView().findNavController().navigate(action)
+            //Navigation.findNavController(requireView()).navigate(R.id.action_loginFragment_to_newAccountFragment)
         }
     }
 }

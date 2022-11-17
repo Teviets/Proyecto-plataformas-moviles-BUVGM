@@ -14,7 +14,7 @@
         android:theme="@style/Theme.BUVGM"
         tools:targetApi="31">
         <activity
-            android:name=".InternalActivity"
+            android:name=".ui.InternalActivity"
             android:exported="false" />
         <activity
             android:name=".ui.MainActivity"
