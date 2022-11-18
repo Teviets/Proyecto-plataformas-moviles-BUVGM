@@ -30,7 +30,7 @@ class ProductAdapter(
         private val nameTxtView: TextView = view.findViewById(R.id.name_product_textView)
         private val descripcionTxtView: TextView = view.findViewById(R.id.description_textView)
         private val precioTxtView: TextView = view.findViewById(R.id.precio_textView)
-        private val favorito: LottieAnimationView = view.findViewById(R.id.favorito_imageView_animated)
+        private val favorito: ImageView = view.findViewById(R.id.favorito_imageView_animated)
 
         fun setData(producto: Product){
             producto.apply {
