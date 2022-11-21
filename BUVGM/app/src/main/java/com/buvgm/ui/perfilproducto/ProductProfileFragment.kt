@@ -10,7 +10,7 @@ import com.buvgm.R
 import com.buvgm.databinding.FragmentProductProfileBinding
 
 
-class ProductProfileFragment : Fragment(R.layout.fragment_product_profile) {
+class ProductProfileFragment : Fragment() {
     private lateinit var binding: FragmentProductProfileBinding
     private val ProductProfileViewModel: ProductProfileViewModel by viewModels()
 
