@@ -11,7 +11,7 @@ import com.buvgm.databinding.FragmentNewAccountBinding
 import com.buvgm.databinding.FragmentProductsHomeBinding
 
 
-class ProductsHomeFragment : Fragment(R.layout.fragment_products_home) {
+class ProductsHomeFragment : Fragment() {
     private val ProductsHomeViewModel: ProductsHomeViewModel by viewModels()
     private lateinit var binding: FragmentProductsHomeBinding
 

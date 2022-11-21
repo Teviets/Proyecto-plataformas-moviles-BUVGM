@@ -9,7 +9,7 @@ import androidx.fragment.app.viewModels
 import com.buvgm.R
 import com.buvgm.databinding.FragmentNewProductBinding
 
-class NewProductFragment : Fragment(R.layout.fragment_new_product) {
+class NewProductFragment : Fragment() {
     private lateinit var binding: FragmentNewProductBinding
     private val NewProductViewModel: NewProductViewModel by viewModels()
 

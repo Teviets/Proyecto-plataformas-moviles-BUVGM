@@ -5,17 +5,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import com.buvgm.R
+import com.buvgm.databinding.FragmentFavoritesBinding
 
-class FavoritesFragment : Fragment(R.layout.fragment_favorites) {
-
+class FavoritesFragment : Fragment() {
+    private lateinit var binding: FragmentFavoritesBinding
+    private val FavoritesViewModel: FavoritesViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_favorites, container, false)
+        binding = FragmentFavoritesBinding.inflate(inflater,container,false)
+        return binding.root
     }
 
 }
