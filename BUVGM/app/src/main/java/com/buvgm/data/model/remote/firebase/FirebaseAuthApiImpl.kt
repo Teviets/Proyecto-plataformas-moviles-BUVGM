@@ -1,7 +1,7 @@
 package com.buvgm.data.model.remote.firebase
 
 import com.buvgm.data.model.remote.api.AuthApi
-import com.buvgm.data.model.repository.place.Resource
+import com.buvgm.data.model.Resource
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.tasks.await
 

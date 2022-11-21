@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import com.buvgm.R
+import com.buvgm.data.model.repository.auth.AuthRepository
 import com.buvgm.databinding.FragmentLoginBinding
 import com.buvgm.ui.InternalActivity
 import com.buvgm.ui.MainActivity
@@ -16,6 +17,7 @@ import com.buvgm.ui.MainActivity
 class LoginFragment : Fragment() {
 
     private lateinit var binding: FragmentLoginBinding
+    private lateinit var authRepository: AuthRepository
 
     override fun onCreateView(
         inflater: LayoutInflater,
