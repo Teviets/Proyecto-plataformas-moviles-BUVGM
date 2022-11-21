@@ -10,7 +10,7 @@ import com.buvgm.R
 import com.buvgm.databinding.FragmentNewAccountBinding
 
 class NewAccountFragment : Fragment() {
-    private val newAccountViewModel: NewAccountViewModel by viewModels()
+    private val NewAccountViewModel: NewAccountViewModel by viewModels()
 
     private lateinit var binding: FragmentNewAccountBinding
 
