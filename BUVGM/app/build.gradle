@@ -45,6 +45,17 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.fragment:fragment:1.5.3'
 
+
+    // Firebase version declaration
+    implementation platform('com.google.firebase:firebase-bom:31.0.1')
+    // Firebase auth
+    implementation 'com.google.firebase:firebase-auth-ktx'
+    // Firebase firestore
+    implementation 'com.google.firebase:firebase-firestore-ktx'
+
+    // Using coroutines with firebase
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.6.4'
+
     def nav_version = "2.5.2"
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
