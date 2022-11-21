@@ -42,7 +42,7 @@ class InternalActivity : AppCompatActivity() {
             }
             true
         }
-        /*tool.setOnMenuItemClickListener {
+        tool.setOnMenuItemClickListener {
             when(it.itemId){
                 R.id.nuevoProducto_item -> {
                     tool.visibility = GONE
@@ -58,7 +58,7 @@ class InternalActivity : AppCompatActivity() {
                 }
                 else -> true
             }
-        }*/
+        }
     }
 
     private fun setFragment(fragment: Fragment) {
