@@ -36,7 +36,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     @Inject
     private lateinit var authRepository: AuthRepository
 
-    override fun onCreateview(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         buttonLogin = view.findViewById(R.id.login_button)
         buttonNewAccount = view.findViewById(R.id.clicklabe_textView_register)
