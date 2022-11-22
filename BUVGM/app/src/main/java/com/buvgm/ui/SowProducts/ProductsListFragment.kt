@@ -71,19 +71,19 @@ ProductAdapter.RecyclerViewProductEvents{
     private fun getProducts() {
         lifecycleScope.launchWhenStarted {
             //products = repository.getPlace()!!
-            if (products != null) {
+            /*if (products != null) {
                 if (products!!.isEmpty()){
                     // api
                 }else{
                     showProducts(products,false)
                 }
-            }
+            }*/
         }
     }
 
     private fun showProducts(products: List<Place>?, isSync: Boolean) {
         // visibilidad
-        this.products = listOf()
+        /*this.products = listOf()
         if (products != null) {
             this.products = products
         }
@@ -92,7 +92,7 @@ ProductAdapter.RecyclerViewProductEvents{
             setUpRecycler()
         }else{
             adapter.notifyDataSetChanged()
-        }
+        }*/
 
     }
 

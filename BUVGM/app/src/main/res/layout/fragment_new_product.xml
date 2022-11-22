@@ -139,6 +139,7 @@
         android:layout_height="@dimen/margin_xl"
         android:layout_marginTop="@dimen/margin_large"
         android:text="@string/New_image"
+        android:backgroundTint="@color/teal_700"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/inputLayout_new_productFragment_descripcion" />
@@ -150,6 +151,7 @@
         android:layout_marginStart="@dimen/margin_small"
         android:layout_marginTop="20dp"
         android:text="@string/Cancel"
+        android:backgroundTint="@color/teal_700"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button3"
         app:layout_constraintHorizontal_bias="1.0"
@@ -163,6 +165,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="@dimen/margin_small"
         android:text="@string/Listo"
+        android:backgroundTint="@color/teal_700"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
