@@ -31,8 +31,6 @@ class InternalActivity : AppCompatActivity() {
     private lateinit var tool: androidx.appcompat.widget.Toolbar
     private lateinit var container: FragmentContainerView
 
-    private var estado: String = ""
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_internal)

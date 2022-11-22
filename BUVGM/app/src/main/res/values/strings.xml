@@ -40,5 +40,6 @@
     <string name="Telefono">Telefono</string>
     <string name="Descripcion">Descripcion</string>
     <string name="text_new_Profile_img">Presione para subir una imagen</string>
+    <string name="err_login">Correo o contraseña incorrectos</string>
 
 </resources>
