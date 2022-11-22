@@ -14,11 +14,14 @@ import coil.load
 import coil.loadAny
 import coil.request.CachePolicy
 import coil.transform.CircleCropTransformation
+import com.buvgm.ui.SowProducts.ProductsListFragment
+import com.buvgm.ui.favoritos.FavoritesFragment
+import com.buvgm.ui.productos.ProductsHomeFragment
 import okio.utf8Size
 
 class ProductAdapter(
     private val dataSet: MutableList<Product>,
-    private val listener: RecyclerViewProductEvents
+    private val listener: ProductsListFragment
 ) : RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
 
     class ViewHolder(

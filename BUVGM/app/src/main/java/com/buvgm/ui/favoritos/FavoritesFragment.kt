@@ -5,10 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.buvgm.R
 import com.buvgm.data.model.Product
 import com.buvgm.databinding.FragmentFavoritesBinding
 import com.buvgm.ui.Adapter.ProductAdapter
@@ -17,7 +15,9 @@ class FavoritesFragment : Fragment() {
     private lateinit var binding: FragmentFavoritesBinding
     private lateinit var adapter: ProductAdapter
     private lateinit var database: ProyectDatabase
-    
+
+    private val products: MutableList<Product> = mutableListOf()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,7 +34,7 @@ class FavoritesFragment : Fragment() {
 
     private fun getProducts() {
         lifecycleScope.launchWhenStarted {
-            val products = database.ProductDao().getProducts()
+            val products = database.ProductDao().getFavoritesProducts()
             if (products.isEmpty()){
                 // No verifica api
             }else{
@@ -56,9 +56,9 @@ class FavoritesFragment : Fragment() {
 
     private fun setUpRecycler() {
         adapter = ProductAdapter(this.products,this)
-        binding.homeRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        binding.homeRecyclerView.setHasFixedSize(true)
-        binding.homeRecyclerView.adapter = adapter
+        binding.favoritesRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+        binding.favoritesRecyclerView.setHasFixedSize(true)
+        binding.favoritesRecyclerView.adapter = adapter
     }
 
 }
