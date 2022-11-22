@@ -6,54 +6,70 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.Toast
 import androidx.core.os.bundleOf
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
-import com.buvgm.R
-import com.buvgm.data.model.remote.firebase.FirebaseAuthApiImpl
 import com.buvgm.data.model.repository.auth.AuthRepository
-import com.buvgm.data.model.repository.auth.AuthRepositoryImpl
-import com.buvgm.databinding.ActivityMainBinding
 import com.buvgm.databinding.FragmentLoginBinding
 import com.buvgm.ui.InternalActivity
-import com.buvgm.ui.MainActivity
-import com.google.android.material.textfield.TextInputLayout
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class LoginFragment : Fragment(R.layout.fragment_login) {
+class LoginFragment : Fragment() {
 
-    private lateinit var buttonLogin: Button
-    private lateinit var buttonNewAccount: Button
-    private lateinit var inputEmail: TextInputLayout
-    private lateinit var inputPassword: TextInputLayout
-
+    private lateinit var binding: FragmentLoginBinding
+    private val LoginViewModel:LoginViewModel by viewModels()
     @Inject
     private lateinit var authRepository: AuthRepository
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        buttonLogin = view.findViewById(R.id.login_button)
-        buttonNewAccount = view.findViewById(R.id.clicklabe_textView_register)
-        inputEmail = view.findViewById(R.id.inputLayout_loginFragment_email)
-        inputPassword = view.findViewById(R.id.inputLayout_loginFragment_password)
-
-        setListeners()
-        //authRepository = AuthRepositoryImpl{
-        //   = FirebaseAuthApiImpl()
-        //}
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentLoginBinding.inflate(inflater,container,false )
+        return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setListeners()
+    }
 
-    private fun setListeners() {
-        buttonLogin.setOnClickListener {
-            val email = inputEmail.editText!!.text.toString()
-            val password = inputPassword.editText!!.text.toString()
+    private fun setListeners(){
+        binding.loginButton.setOnClickListener{
+            binding.loginButton.visibility = View.GONE
+            binding.ProgressbarLogin.visibility = View.VISIBLE
+            val intent = Intent(context, InternalActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(intent)
+            CoroutineScope(Dispatchers.Main).launch {
+                delay(1000L)
+            }
+            verificacion(
+                email = binding.inputLayoutLoginFragmentEmail.editText!!.text.toString(),
+                password = binding.inputLayoutLoginFragmentPassword.editText!!.text.toString()
+            )
+        }
+        binding.clicklabeTextViewRegister.setOnClickListener {
+            val action = LoginFragmentDirections.actionLoginFragmentToNewAccountFragment()
+            requireView().findNavController().navigate(action)
+        }
+    }
+
+    private fun verificacion(email: String,password: String){
+        binding.loginButton.visibility = View.GONE
+        binding.ProgressbarLogin.visibility = View.VISIBLE
+        binding.loginButton.setOnClickListener {
+            val email = binding.inputLayoutLoginFragmentEmail.editText!!.text.toString()
+            val password = binding.inputLayoutLoginFragmentPassword.editText!!.text.toString()
 
 
             lifecycleScope.launch {
@@ -65,6 +81,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                         Toast.LENGTH_LONG
                     ).show()
                     Intent(requireContext(), InternalActivity::class.java).apply {  //Mover hacia donde se requiere siguiente fragment
+                        addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                         putExtras(bundleOf("id" to userId))
                         startActivity(this)
                     }
@@ -74,8 +91,14 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                         "Usuario o contraseña incorrectos",
                         Toast.LENGTH_LONG
                     ).show()
+                    CoroutineScope(Dispatchers.Main).launch {
+                        delay(1000L)
+                    }
+                    binding.loginButton.visibility = View.VISIBLE
+                    binding.ProgressbarLogin.visibility = View.GONE
                 }
             }
         }
+
     }
 }

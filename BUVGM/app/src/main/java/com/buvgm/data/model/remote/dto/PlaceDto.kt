@@ -6,7 +6,7 @@ data class PlaceDto(
     val Contacto: String = "",
     val Descripcion: String = "",
     val Nombre: String = "",
-    val Precio: String = "",
+    val Precio: String = ""
 )
 
 fun PlaceDto.mapToEntity() : Place = Place(
