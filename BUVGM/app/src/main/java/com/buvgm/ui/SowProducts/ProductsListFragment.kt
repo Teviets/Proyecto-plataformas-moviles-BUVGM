@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,9 +13,7 @@ import com.buvgm.R
 import com.buvgm.data.model.Product
 import com.buvgm.databinding.FragmentProductsListBinding
 import com.buvgm.ui.Adapter.ProductAdapter
-import com.buvgm.ui.configuracion.SettingsFragment
-import com.buvgm.ui.configuracion.SettingsFragmentDirections
-import com.buvgm.ui.nuevoproducto.NewProductFragment
+
 
 class ProductsListFragment : Fragment(),
 ProductAdapter.RecyclerViewProductEvents{
@@ -67,24 +66,7 @@ ProductAdapter.RecyclerViewProductEvents{
             }
             true
         }
-        binding.principalToolbar.setOnMenuItemClickListener{
-            when(it.itemId){
-                R.id.nuevoProducto_item -> {
-                    binding.principalToolbar.visibility = View.GONE
-                    val action = ProductsListFragmentDirections.actionProductsListFragmentToNewProductFragment()
-                    requireView().findNavController().navigate(action)
-                    true
-                }
-                R.id.settings_item -> {
-                    binding.principalToolbar.visibility = View.GONE
-                    val action = ProductsListFragmentDirections.actionProductsListFragmentToSettingsFragment()
-                    requireView().findNavController().navigate(action)
 
-                    true
-                }
-                else -> true
-            }
-        }
     }
 
     private fun getProducts() {
@@ -126,6 +108,8 @@ ProductAdapter.RecyclerViewProductEvents{
         )
         requireView().findNavController().navigate(action)
     }
+
+
 
 
 

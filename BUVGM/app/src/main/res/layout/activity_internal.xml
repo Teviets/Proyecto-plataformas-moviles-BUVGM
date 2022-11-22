@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     android:background="@color/Fondo"
     tools:context=".ui.InternalActivity">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/principal_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/teal_700"
+        app:title="@string/BUVGM_APP"
+        app:menu="@menu/menu_internal_toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/principal_fragmentContainerView"
@@ -17,7 +27,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/principal_toolbar" />
 
 
 

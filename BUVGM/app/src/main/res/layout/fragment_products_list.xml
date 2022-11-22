@@ -8,16 +8,7 @@
     android:background="@color/Fondo">
 
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/principal_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/teal_700"
-        app:title="@string/BUVGM_APP"
-        app:menu="@menu/menu_internal_toolbar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/search_textInputLayout"
@@ -33,7 +24,7 @@
         app:hintTextColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/principal_toolbar"
+        app:layout_constraintTop_toTopOf="parent"
         app:startIconDrawable="@drawable/searchicon">
 
         <com.google.android.material.textfield.TextInputEditText
