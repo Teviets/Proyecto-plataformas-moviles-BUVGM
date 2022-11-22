@@ -49,13 +49,4 @@
         tools:text="precio" />
 
 
-    <ImageView
-        android:id="@+id/favorito_imageView_animated"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_launcher_foreground" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
