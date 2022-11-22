@@ -6,10 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.buvgm.R
+import com.buvgm.databinding.FragmentSettingsBinding
 
 
 class SettingsFragment : Fragment() {
-    private lateinit var binding: FragmentSettin
+    private lateinit var binding: FragmentSettingsBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

@@ -59,5 +59,9 @@ class InternalActivity : AppCompatActivity() {
         }
     }
 
+    override fun onBackPressed() {
+        tool.visibility= View.VISIBLE
+        super.onBackPressed()
+    }
 
 }
