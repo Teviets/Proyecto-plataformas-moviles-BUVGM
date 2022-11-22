@@ -5,12 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.buvgm.R
-import com.buvgm.data.model.Product
+import com.buvgm.data.model.local.entity.Place
+import com.buvgm.data.model.repository.place.PlaceRepository
 import com.buvgm.databinding.FragmentProductsListBinding
 import com.buvgm.ui.Adapter.ProductAdapter
 
@@ -19,10 +19,9 @@ class ProductsListFragment : Fragment(),
 ProductAdapter.RecyclerViewProductEvents{
     private lateinit var binding: FragmentProductsListBinding
     private lateinit var adapter: ProductAdapter
-    //private lateinit var database: ProyectDataBase
+    private lateinit var repository: PlaceRepository
 
-
-    private var products: MutableList<Product> = mutableListOf()
+    private lateinit var products: List<Place>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -71,19 +70,23 @@ ProductAdapter.RecyclerViewProductEvents{
 
     private fun getProducts() {
         lifecycleScope.launchWhenStarted {
-            //val products = database.productDao().getProducts()
-            if (products.isEmpty()){
-                // api
-            }else{
-                showProducts(products,false)
+            //products = repository.getPlace()!!
+            if (products != null) {
+                if (products!!.isEmpty()){
+                    // api
+                }else{
+                    showProducts(products,false)
+                }
             }
         }
     }
 
-    private fun showProducts(products: List<Product>, isSync: Boolean) {
+    private fun showProducts(products: List<Place>?, isSync: Boolean) {
         // visibilidad
-        this.products.clear()
-        this.products.addAll(products)
+        this.products = listOf()
+        if (products != null) {
+            this.products = products
+        }
 
         if (!isSync){
             setUpRecycler()
@@ -94,7 +97,7 @@ ProductAdapter.RecyclerViewProductEvents{
     }
 
     private fun setUpRecycler() {
-        adapter = ProductAdapter(this.products,this)
+        adapter = ProductAdapter(this.products as MutableList<Place>,this)
         binding.apply {
             theRecyclerView.layoutManager = LinearLayoutManager(requireContext())
             theRecyclerView.setHasFixedSize(true)
@@ -102,11 +105,11 @@ ProductAdapter.RecyclerViewProductEvents{
         }
     }
 
-    override fun onItemClicked(product: Product){
-        val action = ProductsListFragmentDirections.actionProductsListFragmentToProductProfileFragment(
+    override fun onItemClicked(product: Place){
+        /*val action = ProductsListFragmentDirections.actionProductsListFragmentToProductProfileFragment(
             product.id
         )
-        requireView().findNavController().navigate(action)
+        requireView().findNavController().navigate(action)*/
     }
 
 

@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.Button
+import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import com.buvgm.R
 import com.buvgm.data.model.local.entity.Place
@@ -37,7 +38,9 @@ class NewProductFragment : Fragment(R.layout.fragment_new_product) {
         inputContacto = view.findViewById(R.id.inputLayout_new_productFragment_contacto)
 
         repository = PlaceRepositoryImpl(
-            FirebasePlaceApiImpl(Firebase.firestore)
+            FirebasePlaceApiImpl(
+                Firebase.firestore
+            )
         )
 
         initListeners()
@@ -64,6 +67,11 @@ class NewProductFragment : Fragment(R.layout.fragment_new_product) {
                 )
 
             }
+            Toast.makeText(
+                requireContext(),
+                "Su Producto se ha agregado a Firebase",
+                Toast.LENGTH_LONG
+            ).show()
 
         }
     }
