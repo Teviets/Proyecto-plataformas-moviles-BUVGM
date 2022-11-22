@@ -32,7 +32,6 @@ class InternalActivity : AppCompatActivity() {
     private lateinit var container: FragmentContainerView
 
     private var estado: String = ""
-    private val InternalViewModel: InternalViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +42,7 @@ class InternalActivity : AppCompatActivity() {
         container = findViewById(R.id.principal_fragmentContainerView)
 
         setListeners()
-        
+
     }
 
 
