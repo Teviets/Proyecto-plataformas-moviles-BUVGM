@@ -28,11 +28,9 @@ class NewProductFragment : Fragment(R.layout.fragment_new_product) {
 
     private lateinit var repository: PlaceRepository
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_new_product, container, false)
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         buttonUpload = view.findViewById(R.id.button_Upload)
         inputNombre = view.findViewById(R.id.inputLayout_new_productFragment_nombre)
@@ -47,6 +45,8 @@ class NewProductFragment : Fragment(R.layout.fragment_new_product) {
         initListeners()
 
     }
+
+
 
     private fun initListeners() {
         buttonUpload.setOnClickListener {
