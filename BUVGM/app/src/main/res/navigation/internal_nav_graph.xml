@@ -16,6 +16,15 @@
         <action
             android:id="@+id/action_productsHomeFragment_to_searchFragment2"
             app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_productsHomeFragment_to_newProductFragment"
+            app:destination="@id/newProductFragment" />
+        <action
+            android:id="@+id/action_productsHomeFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_productsHomeFragment_to_productProfileFragment"
+            app:destination="@id/productProfileFragment" />
     </fragment>
     <fragment
         android:id="@+id/favoritesFragment"
@@ -28,6 +37,15 @@
         <action
             android:id="@+id/action_favoritesFragment_to_searchFragment"
             app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_favoritesFragment_to_newProductFragment"
+            app:destination="@id/newProductFragment" />
+        <action
+            android:id="@+id/action_favoritesFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_favoritesFragment_to_productProfileFragment"
+            app:destination="@id/productProfileFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
@@ -40,5 +58,49 @@
         <action
             android:id="@+id/action_searchFragment_to_favoritesFragment2"
             app:destination="@id/favoritesFragment" />
+        <action
+            android:id="@+id/action_searchFragment_to_newProductFragment"
+            app:destination="@id/newProductFragment" />
+        <action
+            android:id="@+id/action_searchFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_searchFragment_to_productProfileFragment"
+            app:destination="@id/productProfileFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/newProductFragment"
+        android:name="com.buvgm.ui.nuevoproducto.NewProductFragment"
+        android:label="fragment_new_product"
+        tools:layout="@layout/fragment_new_product" >
+        <action
+            android:id="@+id/action_newProductFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_newProductFragment_to_productsHomeFragment"
+            app:destination="@id/productsHomeFragment" />
+        <action
+            android:id="@+id/action_newProductFragment_to_favoritesFragment"
+            app:destination="@id/favoritesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.buvgm.ui.configuracion.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_favoritesFragment"
+            app:destination="@id/favoritesFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_productsHomeFragment"
+            app:destination="@id/productsHomeFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/productProfileFragment"
+        android:name="com.buvgm.ui.perfilproducto.ProductProfileFragment"
+        android:label="fragment_product_profile"
+        tools:layout="@layout/fragment_product_profile" />
 </navigation>
