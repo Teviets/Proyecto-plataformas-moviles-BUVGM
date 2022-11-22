@@ -11,6 +11,7 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
+import com.buvgm.data.model.repository.auth.AuthRepository
 import com.buvgm.databinding.FragmentLoginBinding
 import com.buvgm.ui.InternalActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -52,10 +53,12 @@ class LoginFragment : Fragment() {
             CoroutineScope(Dispatchers.Main).launch {
                 delay(1000L)
             }
+
         verificacion(
             email = binding.inputLayoutLoginFragmentEmail.editText!!.text.toString(),
             password = binding.inputLayoutLoginFragmentPassword.editText!!.text.toString()
-            )
+        )
+
         }
         binding.clicklabeTextViewRegister.setOnClickListener {
             val action = LoginFragmentDirections.actionLoginFragmentToNewAccountFragment()
