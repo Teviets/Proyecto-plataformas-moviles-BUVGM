@@ -6,16 +6,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.buvgm.R
 import com.buvgm.data.model.Product
 import com.buvgm.databinding.FragmentProductsListBinding
 import com.buvgm.ui.Adapter.ProductAdapter
+import com.buvgm.ui.configuracion.SettingsFragment
+import com.buvgm.ui.configuracion.SettingsFragmentDirections
+import com.buvgm.ui.nuevoproducto.NewProductFragment
 
-class ProductsListFragment : Fragment() {
+class ProductsListFragment : Fragment(),
+ProductAdapter.RecyclerViewProductEvents{
     private lateinit var binding: FragmentProductsListBinding
     private lateinit var adapter: ProductAdapter
-    private lateinit var database: ProyectDataBase
+    //private lateinit var database: ProyectDataBase
 
 
     private var products: MutableList<Product> = mutableListOf()
@@ -39,29 +44,52 @@ class ProductsListFragment : Fragment() {
         binding.bottomNavigationView.setOnItemSelectedListener {
             when(it.itemId){
                 R.id.Home_item -> {
-                    this.products.shuffle()
-                    adapter.notifyDataSetChanged()
+                    binding.searchTextInputLayout.visibility = View.GONE
+                    /*this.products.shuffle()
+                    adapter.notifyDataSetChanged()*/
                 }
                 R.id.search_item -> {
+                    binding.searchTextInputLayout.visibility = View.VISIBLE
+                    /*this.products.shuffle()
+                    adapter.notifyDataSetChanged()
 
+                    lifecycleScope.launchWhenStarted {
+                        var txt = binding.
+                    }*/
                 }
                 R.id.favorites_item -> {
-                    val favProducts = database.getFavProducts()
-                    this.products = favProducts
-                    adapter.notifyDataSetChanged()
-                }
-                else -> {
-
+                    binding.searchTextInputLayout.visibility = View.GONE
+                    /*//val favProducts = database.getFavProducts()
+                    //this.products = favProducts
+                    adapter.notifyDataSetChanged()*/
                 }
 
             }
             true
         }
+        binding.principalToolbar.setOnMenuItemClickListener{
+            when(it.itemId){
+                R.id.nuevoProducto_item -> {
+                    binding.principalToolbar.visibility = View.GONE
+                    val action = ProductsListFragmentDirections.actionProductsListFragmentToNewProductFragment()
+                    requireView().findNavController().navigate(action)
+                    true
+                }
+                R.id.settings_item -> {
+                    binding.principalToolbar.visibility = View.GONE
+                    val action = ProductsListFragmentDirections.actionProductsListFragmentToSettingsFragment()
+                    requireView().findNavController().navigate(action)
+
+                    true
+                }
+                else -> true
+            }
+        }
     }
 
     private fun getProducts() {
         lifecycleScope.launchWhenStarted {
-            val products = database.productDao().getProducts()
+            //val products = database.productDao().getProducts()
             if (products.isEmpty()){
                 // api
             }else{
@@ -90,6 +118,13 @@ class ProductsListFragment : Fragment() {
             theRecyclerView.setHasFixedSize(true)
             theRecyclerView.adapter = adapter
         }
+    }
+
+    override fun onItemClicked(product: Product){
+        val action = ProductsListFragmentDirections.actionProductsListFragmentToProductProfileFragment(
+            product.id
+        )
+        requireView().findNavController().navigate(action)
     }
 
 

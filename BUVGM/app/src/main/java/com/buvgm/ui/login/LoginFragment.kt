@@ -40,12 +40,20 @@ class LoginFragment : Fragment() {
 
     private fun setListeners(){
         binding.loginButton.setOnClickListener{
-            verificacion(
+            binding.loginButton.visibility = View.GONE
+            binding.ProgressbarLogin.visibility = View.VISIBLE
+            val intent = Intent(context, InternalActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(intent)
+            CoroutineScope(Dispatchers.Main).launch {
+                delay(1000L)
+            }
+            /*verificacion(
                 email = binding.inputLayoutLoginFragmentEmail.editText!!.text.toString(),
                 password = binding.inputLayoutLoginFragmentPassword.editText!!.text.toString(),
                 //Mutable list de emails,
                 // Mutable list de password
-            )
+            )*/
         }
         binding.clicklabeTextViewRegister.setOnClickListener {
             val action = LoginFragmentDirections.actionLoginFragmentToNewAccountFragment()

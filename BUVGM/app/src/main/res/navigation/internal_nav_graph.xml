@@ -3,69 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/internal_nav_graph"
-    app:startDestination="@id/productsHomeFragment">
+    app:startDestination="@id/productsListFragment">
 
     <fragment
-        android:id="@+id/productsHomeFragment"
-        android:name="com.buvgm.ui.productos.ProductsHomeFragment"
-        android:label="fragment_products_home"
-        tools:layout="@layout/fragment_products_home" >
+        android:id="@+id/productsListFragment"
+        android:name="com.buvgm.ui.SowProducts.ProductsListFragment"
+        android:label="fragment_products_list"
+        tools:layout="@layout/fragment_products_list" >
         <action
-            android:id="@+id/action_productsHomeFragment_to_favoritesFragment"
-            app:destination="@id/favoritesFragment" />
-        <action
-            android:id="@+id/action_productsHomeFragment_to_searchFragment2"
-            app:destination="@id/searchFragment" />
-        <action
-            android:id="@+id/action_productsHomeFragment_to_newProductFragment"
+            android:id="@+id/action_productsListFragment_to_newProductFragment"
             app:destination="@id/newProductFragment" />
         <action
-            android:id="@+id/action_productsHomeFragment_to_settingsFragment"
+            android:id="@+id/action_productsListFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
         <action
-            android:id="@+id/action_productsHomeFragment_to_productProfileFragment"
-            app:destination="@id/productProfileFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/favoritesFragment"
-        android:name="com.buvgm.ui.favoritos.FavoritesFragment"
-        android:label="fragment_favorites"
-        tools:layout="@layout/fragment_favorites" >
-        <action
-            android:id="@+id/action_favoritesFragment_to_productsHomeFragment2"
-            app:destination="@id/productsHomeFragment" />
-        <action
-            android:id="@+id/action_favoritesFragment_to_searchFragment"
-            app:destination="@id/searchFragment" />
-        <action
-            android:id="@+id/action_favoritesFragment_to_newProductFragment"
-            app:destination="@id/newProductFragment" />
-        <action
-            android:id="@+id/action_favoritesFragment_to_settingsFragment"
-            app:destination="@id/settingsFragment" />
-        <action
-            android:id="@+id/action_favoritesFragment_to_productProfileFragment"
-            app:destination="@id/productProfileFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/searchFragment"
-        android:name="com.buvgm.ui.busqueda.SearchFragment"
-        android:label="fragment_search"
-        tools:layout="@layout/fragment_search" >
-        <action
-            android:id="@+id/action_searchFragment_to_productsHomeFragment2"
-            app:destination="@id/productsHomeFragment" />
-        <action
-            android:id="@+id/action_searchFragment_to_favoritesFragment2"
-            app:destination="@id/favoritesFragment" />
-        <action
-            android:id="@+id/action_searchFragment_to_newProductFragment"
-            app:destination="@id/newProductFragment" />
-        <action
-            android:id="@+id/action_searchFragment_to_settingsFragment"
-            app:destination="@id/settingsFragment" />
-        <action
-            android:id="@+id/action_searchFragment_to_productProfileFragment"
+            android:id="@+id/action_productsListFragment_to_productProfileFragment"
             app:destination="@id/productProfileFragment" />
     </fragment>
     <fragment
@@ -74,14 +26,8 @@
         android:label="fragment_new_product"
         tools:layout="@layout/fragment_new_product" >
         <action
-            android:id="@+id/action_newProductFragment_to_searchFragment"
-            app:destination="@id/searchFragment" />
-        <action
-            android:id="@+id/action_newProductFragment_to_productsHomeFragment"
-            app:destination="@id/productsHomeFragment" />
-        <action
-            android:id="@+id/action_newProductFragment_to_favoritesFragment"
-            app:destination="@id/favoritesFragment" />
+            android:id="@+id/action_newProductFragment_to_productsListFragment"
+            app:destination="@id/productsListFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
@@ -89,18 +35,16 @@
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" >
         <action
-            android:id="@+id/action_settingsFragment_to_favoritesFragment"
-            app:destination="@id/favoritesFragment" />
-        <action
-            android:id="@+id/action_settingsFragment_to_productsHomeFragment"
-            app:destination="@id/productsHomeFragment" />
-        <action
-            android:id="@+id/action_settingsFragment_to_searchFragment"
-            app:destination="@id/searchFragment" />
+            android:id="@+id/action_settingsFragment_to_productsListFragment"
+            app:destination="@id/productsListFragment" />
     </fragment>
     <fragment
         android:id="@+id/productProfileFragment"
         android:name="com.buvgm.ui.perfilproducto.ProductProfileFragment"
         android:label="fragment_product_profile"
-        tools:layout="@layout/fragment_product_profile" />
+        tools:layout="@layout/fragment_product_profile" >
+        <argument
+            android:name="id"
+            app:argType="string"/>
+    </fragment>
 </navigation>
