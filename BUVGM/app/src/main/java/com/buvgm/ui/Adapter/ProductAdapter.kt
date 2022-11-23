@@ -3,7 +3,6 @@ package com.buvgm.ui.Adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
@@ -21,7 +20,7 @@ class ProductAdapter(
         val listener: RecyclerViewProductEvents
     ) : RecyclerView.ViewHolder(view) {
         private val layoutProduct: ConstraintLayout = view.findViewById(R.id.layout_itemProduct)
-        private val imgProd: ImageView = view.findViewById(R.id.product_imageView)
+        //private val imgProd: ImageView = view.findViewById(R.id.product_imageView)
         private val nameTxtView: TextView = view.findViewById(R.id.name_product_textView)
         private val descripcionTxtView: TextView = view.findViewById(R.id.description_textView)
         private val precioTxtView: TextView = view.findViewById(R.id.precio_textView)
@@ -37,11 +36,11 @@ class ProductAdapter(
                     memoryCachePolicy(CachePolicy.DISABLED)
                 }*/
                 // Asignacion de nombre
-                nameTxtView.text = producto.Nombre
+                nameTxtView.text = producto.nombre
                 // Asignacion de descripcion
                 var resizeDescript: String = ""
-                if (producto.Descripcion.utf8Size() > 20){
-                    for (char in producto.Descripcion){
+                if (producto.descripcion.utf8Size() > 20){
+                    for (char in producto.descripcion){
                         resizeDescript = resizeDescript + char
                         if (resizeDescript.utf8Size() <= 20){
                             resizeDescript = resizeDescript + "..."
@@ -53,7 +52,7 @@ class ProductAdapter(
                 }
                 descripcionTxtView.text = resizeDescript
                 // asignacion de precio
-                precioTxtView.text = producto.Precio
+                precioTxtView.text = producto.precio
                 // Asignacion favoritos
                 /*if (producto == true){
                     // Se deja la animacion como favorito

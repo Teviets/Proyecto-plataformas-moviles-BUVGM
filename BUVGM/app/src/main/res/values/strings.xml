@@ -42,5 +42,6 @@
     <string name="text_new_Profile_img">Presione para subir una imagen</string>
     <string name="err_login">Correo o contraseña incorrectos</string>
     <string name="error_character_not_found">Error, Producto no encontrado</string>
+    <string name="ID">Coloque un numero aleatorio de 4 digitos</string>
 
 </resources>

@@ -16,15 +16,15 @@ class InternalActivity : AppCompatActivity() {
 
     private lateinit var container: FragmentContainerView
     private lateinit var tool: androidx.appcompat.widget.Toolbar
+    private lateinit var fagmentContaine: FragmentContainerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_internal)
 
-        container = findViewById(R.id.principal_fragmentContainerView)
+        container = findViewById(R.id.FragmentContainerView_Internal)
         tool = findViewById(R.id.principal_toolbar)
         setFragment(ProductsListFragment())
-
         setListeners()
 
     }
@@ -51,7 +51,7 @@ class InternalActivity : AppCompatActivity() {
     private fun setFragment(fragment: Fragment) {
         supportFragmentManager.commit {
             setReorderingAllowed(true)
-            replace(R.id.principal_fragmentContainerView, fragment).addToBackStack(null)
+            replace(R.id.FragmentContainerView_Internal, fragment).addToBackStack(null)
         }
     }
 

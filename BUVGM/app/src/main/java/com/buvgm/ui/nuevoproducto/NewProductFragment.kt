@@ -16,6 +16,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlin.random.Random
 
 class NewProductFragment : Fragment(R.layout.fragment_new_product) {
 
@@ -24,6 +25,7 @@ class NewProductFragment : Fragment(R.layout.fragment_new_product) {
     private lateinit var inputDescripcion: TextInputLayout
     private lateinit var inputPrecio: TextInputLayout
     private lateinit var inputContacto: TextInputLayout
+    //private lateinit var inputID: TextInputLayout
 
     private lateinit var repository: PlaceRepository
 
@@ -36,6 +38,7 @@ class NewProductFragment : Fragment(R.layout.fragment_new_product) {
         inputDescripcion = view.findViewById(R.id.inputLayout_new_productFragment_descripcion)
         inputPrecio = view.findViewById(R.id.inputLayout_new_productFragment_precio)
         inputContacto = view.findViewById(R.id.inputLayout_new_productFragment_contacto)
+        //inputID = view.findViewById(R.id.inputLayout_new_productFragment_ID)
 
         repository = PlaceRepositoryImpl(
             FirebasePlaceApiImpl(
@@ -47,7 +50,10 @@ class NewProductFragment : Fragment(R.layout.fragment_new_product) {
 
     }
 
-
+    fun rand(start: Int, end: Int): Int {
+        require(!(start > end || end - start + 1 > Int.MAX_VALUE)) { "Illegal Argument" }
+        return Random(System.nanoTime()).nextInt(end - start + 1) + start
+    }
 
     private fun initListeners() {
         buttonUpload.setOnClickListener {
@@ -55,14 +61,20 @@ class NewProductFragment : Fragment(R.layout.fragment_new_product) {
             val Descripcion = inputDescripcion.editText!!.text.toString()
             val Precio = inputPrecio.editText!!.text.toString()
             val Contacto = inputContacto.editText!!.text.toString()
+            //val id = inputID.editText!!.text.toString().toInt()
+            val favorite = false
+
+            val id = rand(1,99)
 
             lifecycleScope.launch(Dispatchers.IO){
                 repository.createPlace(
                     place = Place(
-                        Contacto = Contacto,
-                        Descripcion = Descripcion,
-                        Nombre = Nombre,
-                        Precio = Precio
+                        id = id,
+                        contacto = Contacto,
+                        descripcion = Descripcion,
+                        nombre = Nombre,
+                        precio = Precio,
+                        favorite = favorite
                     )
                 )
 
@@ -75,5 +87,7 @@ class NewProductFragment : Fragment(R.layout.fragment_new_product) {
 
         }
     }
+
+
 
 }

@@ -17,7 +17,7 @@ import com.buvgm.databinding.FragmentProductProfileBinding
 
 
 class ProductProfileFragment : Fragment() {
-    private val args: ProductProfileFragmentArgs by navArgs()
+    //private val args: ProductProfileFragmentArgs by navArgs()
     private var producto: Product? = null
     private var isLike: Boolean = false
     private lateinit var binding: FragmentProductProfileBinding
@@ -35,7 +35,7 @@ class ProductProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         getProduct()
-        setListener()
+        //setListener()
     }
 
     private fun getProduct() {

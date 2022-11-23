@@ -26,6 +26,11 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+
+
+
+
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/inputLayout_new_productFragment_contacto"
         android:layout_width="0dp"
@@ -134,43 +139,24 @@
         app:layout_constraintTop_toBottomOf="@+id/inputLayout_new_productFragment_precio" />
 
     <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/margin_xl"
-        android:layout_marginTop="@dimen/margin_large"
-        android:text="@string/New_image"
-        android:backgroundTint="@color/teal_700"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputLayout_new_productFragment_descripcion" />
-
-    <Button
         android:id="@+id/button4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_small"
-        android:layout_marginTop="20dp"
-        android:text="@string/Cancel"
         android:backgroundTint="@color/teal_700"
+        android:text="@string/Cancel"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button3"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/button_Upload"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
         android:layout_marginEnd="@dimen/margin_small"
-        android:text="@string/Listo"
         android:backgroundTint="@color/teal_700"
+        android:text="@string/Listo"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/button3"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

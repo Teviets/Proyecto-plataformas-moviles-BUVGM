@@ -13,4 +13,6 @@
     <dimen name="expandH">409dp</dimen>
     <dimen name="heigthItem">88dp</dimen>
     <dimen name="paddingItem">8dp</dimen>
+    <dimen name="card_elevation">3dp</dimen>
+    <dimen name="corner_radius_card_view">6dp</dimen>
 </resources>

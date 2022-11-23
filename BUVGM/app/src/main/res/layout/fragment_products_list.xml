@@ -8,8 +8,6 @@
     android:background="@color/Fondo">
 
 
-
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/search_textInputLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -22,7 +20,7 @@
         android:visibility="gone"
         app:boxStrokeColor="@color/teal_700"
         app:hintTextColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button_search"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:startIconDrawable="@drawable/searchicon">
@@ -54,5 +52,17 @@
         app:layout_constraintTop_toBottomOf="@+id/search_textInputLayout"
         tools:listitem="@layout/item_product_list"
         tools:visibility="visible" />
+
+    <Button
+        android:id="@+id/button_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/search"
+        android:visibility="gone"
+        android:backgroundTint="@color/teal_700"
+        android:layout_marginVertical="@dimen/margin_small"
+        android:layout_marginHorizontal="@dimen/margin_small"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

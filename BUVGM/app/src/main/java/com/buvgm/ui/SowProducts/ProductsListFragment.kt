@@ -6,22 +6,33 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.buvgm.R
 import com.buvgm.data.model.local.entity.Place
+import com.buvgm.data.model.remote.firebase.FirebasePlaceApiImpl
 import com.buvgm.data.model.repository.place.PlaceRepository
+import com.buvgm.data.model.repository.place.PlaceRepositoryImpl
 import com.buvgm.databinding.FragmentProductsListBinding
 import com.buvgm.ui.Adapter.ProductAdapter
+import com.buvgm.ui.login.LoginFragmentDirections
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
 class ProductsListFragment : Fragment(),
 ProductAdapter.RecyclerViewProductEvents{
     private lateinit var binding: FragmentProductsListBinding
     private lateinit var adapter: ProductAdapter
+
     private lateinit var repository: PlaceRepository
 
-    private lateinit var products: List<Place>
+    private lateinit var products: MutableList<Place>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,6 +40,9 @@ ProductAdapter.RecyclerViewProductEvents{
     ): View? {
         binding = FragmentProductsListBinding.inflate(inflater,container,false)
         return binding.root
+
+
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -36,6 +50,12 @@ ProductAdapter.RecyclerViewProductEvents{
 
         setListeners()
         getProducts()
+
+        repository = PlaceRepositoryImpl(
+            FirebasePlaceApiImpl(
+                Firebase.firestore
+            )
+        )
     }
 
     private fun setListeners() {
@@ -43,56 +63,59 @@ ProductAdapter.RecyclerViewProductEvents{
             when(it.itemId){
                 R.id.Home_item -> {
                     binding.searchTextInputLayout.visibility = View.GONE
-                    /*this.products.shuffle()
-                    adapter.notifyDataSetChanged()*/
+                    binding.buttonSearch.visibility = View.GONE
+                    this.products
+                    getProducts()
+                    adapter.notifyDataSetChanged()
                 }
                 R.id.search_item -> {
                     binding.searchTextInputLayout.visibility = View.VISIBLE
-                    /*this.products.shuffle()
-                    adapter.notifyDataSetChanged()
+                    binding.buttonSearch.visibility = View.VISIBLE
 
-                    lifecycleScope.launchWhenStarted {
-                        var txt = binding.
-                    }*/
                 }
                 R.id.favorites_item -> {
                     binding.searchTextInputLayout.visibility = View.GONE
-                    /*//val favProducts = database.getFavProducts()
-                    //this.products = favProducts
-                    adapter.notifyDataSetChanged()*/
+                    binding.buttonSearch.visibility = View.GONE
+                    getFavorites()
+                    adapter.notifyDataSetChanged()
+
                 }
 
             }
             true
+        }
+        binding.buttonSearch.setOnClickListener {
+            getSearch()
+            adapter.notifyDataSetChanged()
         }
 
     }
 
     private fun getProducts() {
         lifecycleScope.launchWhenStarted {
-            //products = repository.getPlace()!!
-            /*if (products != null) {
+            products = repository.getPlace()!! as MutableList<Place>
+            if (products != null) {
                 if (products!!.isEmpty()){
                     // api
                 }else{
                     showProducts(products,false)
                 }
-            }*/
+            }
         }
     }
 
     private fun showProducts(products: List<Place>?, isSync: Boolean) {
         // visibilidad
-        /*this.products = listOf()
+        this.products = mutableListOf()
         if (products != null) {
-            this.products = products
+            this.products = products as MutableList<Place>
         }
 
         if (!isSync){
             setUpRecycler()
         }else{
             adapter.notifyDataSetChanged()
-        }*/
+        }
 
     }
 
@@ -106,11 +129,39 @@ ProductAdapter.RecyclerViewProductEvents{
     }
 
     override fun onItemClicked(product: Place){
-        /*val action = ProductsListFragmentDirections.actionProductsListFragmentToProductProfileFragment(
-            product.id
-        )
-        requireView().findNavController().navigate(action)*/
+        val action =ProductsListFragmentDirections.actionProductsListFragment2ToProductProfileFragment2()
+        requireView().findNavController().navigate(action)
     }
+
+    private fun getFavorites(){
+        lifecycleScope.launchWhenStarted {
+            products = repository.getPlaceFavorite(true) !! as MutableList<Place>
+            if (products != null) {
+                if (products!!.isEmpty()){
+                    // api
+                }else{
+                    showProducts(products,false)
+                }
+            }
+        }
+    }
+
+    private fun getSearch(){
+        lifecycleScope.launchWhenStarted {
+            products = repository
+                .getPlaceSearch(
+                    binding.searchTextInputLayout.editText!!.text.toString()
+                )!! as MutableList<Place>
+            if (products != null) {
+                if (products!!.isEmpty()){
+                    // api
+                }else{
+                    showProducts(products,false)
+                }
+            }
+        }
+    }
+
 
 
 

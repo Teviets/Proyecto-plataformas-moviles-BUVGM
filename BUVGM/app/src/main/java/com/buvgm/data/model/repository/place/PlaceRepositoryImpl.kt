@@ -18,4 +18,14 @@ class PlaceRepositoryImpl(
         val AllProductos = api.AllProducts()
         return AllProductos?.map { dto -> dto.mapToEntity()}
     }
+
+    override suspend fun getPlaceFavorite(isFavorite: Boolean): List<Place>? {
+        val getByFavorite = api.getByFavorite(isFavorite)
+        return getByFavorite?.map { dto -> dto.mapToEntity()}
+    }
+
+    override suspend fun getPlaceSearch(nombre: String): List<Place>? {
+        val getBySearch = api.getBySearch(nombre)
+        return getBySearch?.map { dto -> dto.mapToEntity()}
+    }
 }

@@ -2,28 +2,25 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/internal_nav_graph"
-    app:startDestination="@id/productsListFragment">
+    android:id="@+id/prueba_nav_graph"
+    app:startDestination="@id/productsListFragment2">
 
     <fragment
-        android:id="@+id/productsListFragment"
+        android:id="@+id/productsListFragment2"
         android:name="com.buvgm.ui.SowProducts.ProductsListFragment"
         android:label="fragment_products_list"
         tools:layout="@layout/fragment_products_list" >
         <action
-            android:id="@+id/action_productsListFragment_to_productProfileFragment"
-            app:destination="@id/productProfileFragment" />
+            android:id="@+id/action_productsListFragment2_to_productProfileFragment2"
+            app:destination="@id/productProfileFragment2" />
     </fragment>
     <fragment
-        android:id="@+id/productProfileFragment"
+        android:id="@+id/productProfileFragment2"
         android:name="com.buvgm.ui.perfilproducto.ProductProfileFragment"
         android:label="fragment_product_profile"
         tools:layout="@layout/fragment_product_profile" >
-        <argument
-            android:name="Id"
-            app:argType="integer" />
         <action
-            android:id="@+id/action_productProfileFragment_to_productsListFragment"
-            app:destination="@id/productsListFragment" />
+            android:id="@+id/action_productProfileFragment2_to_productsListFragment2"
+            app:destination="@id/productsListFragment2" />
     </fragment>
 </navigation>

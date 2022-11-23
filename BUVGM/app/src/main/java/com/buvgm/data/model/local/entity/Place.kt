@@ -3,15 +3,19 @@ package com.buvgm.data.model.local.entity
 import com.buvgm.data.model.remote.dto.PlaceDto
 
 data class Place(
-    val Contacto: String,
-    val Descripcion: String,
-    val Nombre: String,
-    val Precio: String,
+    val id: Int,
+    val contacto: String,
+    val descripcion: String,
+    val nombre: String,
+    val precio: String,
+    val favorite: Boolean
 )
 
 fun Place.mapToDto() : PlaceDto = PlaceDto(
-    Contacto = Contacto,
-    Descripcion = Descripcion,
-    Nombre = Nombre,
-    Precio = Precio,
+    id = id,
+    contacto = contacto,
+    descripcion = descripcion,
+    nombre = nombre,
+    precio = precio,
+    favorite = favorite
 )
