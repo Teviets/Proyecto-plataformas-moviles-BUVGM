@@ -3,25 +3,29 @@ package com.buvgm.data.model.remote.firebase
 import com.buvgm.data.model.remote.api.AuthApi
 import com.buvgm.data.model.Resource
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.tasks.await
 
-class FirebaseAuthApiImpl(
-    private val api: FirebaseAuth
-) : AuthApi {
+class FirebaseAuthApiImpl: AuthApi {
     override suspend fun signInWithEmailAndPassword(
         email: String,
         password: String
     ): Resource<String> {
-        return try {
-            val response = api.signInWithEmailAndPassword(email, password).await()
+        try {
+            val auth = Firebase.auth
 
-            val user = response.user
-            if (user != null)
-                Resource.Success(data = user.uid)
-            else
-                Resource.Error(message = "User not found")
+            val response = auth.signInWithEmailAndPassword(email, password).await()
+
+            val userInfo = response.user
+            return if (userInfo != null) {
+                Resource.Success(data = userInfo.uid)
+            } else {
+                Resource.Error(message = "Error en login")
+            }
         } catch (e: Exception) {
-            Resource.Error(message = "User not found")
+            return Resource.Error(message = "Error en login")
         }
     }
+
 }
